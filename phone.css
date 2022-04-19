@@ -1,0 +1,103 @@
+/* navbar */
+#navbar{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: all 0.4s ease-out;
+}
+#navbar img{
+    padding-top: 4px;
+    /* width: 81px; */
+}
+#nav-container ul li a{
+    font-size: 0.9rem;
+}
+/* hamburger design */
+.nav-cont-v{
+    visibility: hidden;
+}
+#burger{
+    top: 18px;
+    right: 11px;
+    visibility: visible;
+}
+.logo_class{
+    visibility: hidden;
+}
+.nav-height{
+    height: 53px;
+}
+.nav_height_inc{
+    height: 211px;
+}
+.logo_show{
+    visibility: visible;
+}
+.nav_container_show{
+    visibility: visible;
+    display: flex;
+}
+#nav-container ul {
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+}
+#nav-container ul li {
+    padding: 10px 0px;
+}
+
+/* home page */
+.p-heading{
+    font-size: 1.4rem;
+}
+#para-id{
+    text-align: center;
+}
+#home-id button{
+    padding: 6px;
+}
+
+/* location */
+#location h2{
+    font-size: 1.4rem;
+}
+#location-container{
+    height: 428px;
+}
+#box-1 img{
+    width: 130px;
+    height: 121px;
+}
+
+/* services */
+#services-boxes{
+    flex-wrap:wrap;
+}
+#service-1{
+    
+}
+#service-1 img{
+    width: 122px;
+}
+#service-1 p{
+}
+#services{
+    height: 1098px;
+}
+#services h2{
+    margin-top: 7px;
+    font-size: 1.4rem;
+    padding: 3px 9px;
+}
+/* reach us */
+#reach-box input {
+    width: 315px;
+}
+#reach-box textarea {
+    width: 315px;
+}
+/* reach us label */
+#reach-box label {
+    padding: 11px 7px;
+}
