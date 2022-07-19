@@ -7,31 +7,40 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" media="screen and (max-width: 960px )" href="phone.css">
+    <link rel="stylesheet" href="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/css/ol.css"
+        type="text/css">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Lora&family=Raleway:wght@300&display=swap');
+
+        .map {
+            height: 350px;
+            width: 100%;
+        }
+
     </style>
+    <script src="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/build/ol.js"></script>
 </head>
 
 <body>
     <div id="head">
-    <header id="navbar" class="nav-height">
-        <img class="logo_class" src="pictures/logo.jpg" alt="logo">
-        <nav id="nav-container" class="nav-cont-v">
-            <ul>
-                <li class="navlist"><a href="#home-container">Home</a></li>
-                <li class="navlist"><a href="#location-container">Locations</a></li>
-                <li class="navlist"><a href="#services-section">Services</a></li>
-                <li class="navlist"><a href="#reach-box">Reach Us</a></li>
-            </ul>
-            <div id="burger">
-                <div id="line"></div>
-                <div id="line"></div>
-                <div id="line"></div>
-            </div>
-        </nav>
-    </header>
+        <header id="navbar" class="nav-height">
+            <img class="logo_class" src="pictures/logo.jpg" alt="logo">
+            <nav id="nav-container" class="nav-cont-v">
+                <ul>
+                    <li class="navlist"><a href="#home-container">Home</a></li>
+                    <li class="navlist"><a href="#location-container">Locations</a></li>
+                    <li class="navlist"><a href="#services-section">Services</a></li>
+                    <li class="navlist"><a href="#reach-box">Reach Us</a></li>
+                </ul>
+                <div id="burger">
+                    <div id="line"></div>
+                    <div id="line"></div>
+                    <div id="line"></div>
+                </div>
+            </nav>
+        </header>
     </div>
-    
+
 
     <section id="home-container">
         <div id="home-id">
@@ -49,18 +58,36 @@
                 <h2 class="s-heading center main-color">Locations</h2>
             </div>
             <div id="boxes">
-                <div id="box-1">
-                    <img src="pictures/locations/kolkata.jpg" alt="Kolkata city" width="276px">
-                    <p>Kolkata</p>
-                </div>
-                <div id="box-1">
-                    <img src="pictures/locations/hyderabda.jpg" alt="Hyderabad city">
-                    <p>Hyderabad</p>
-                </div>
-                <div id="box-1">
-                    <img src="pictures/locations/bangalore.jpg" alt="Bengalore city">
-                    <p>Bangalore</p>
-                </div>
+            <div id="map" class="map"></div>
+            <script type="text/javascript">
+                var map = new ol.Map({
+                    target: 'map',
+                    layers: [
+                        new ol.layer.Tile({
+                            source: new ol.source.OSM()
+                        })
+                    ],
+                    view: new ol.View({
+                        center: ol.proj.fromLonLat([88.3639, 22.5726]),
+                        zoom: 8,
+                        minZoom: 10
+                    })
+                });
+                // marker
+                var markers = new ol.layer.Vector({
+                    source: new ol.source.Vector(),
+                    style: new ol.style.Style({
+                        image: new ol.style.Icon({
+                            anchor: [0.5, 1],
+                            src: 'pictures/locations/marker.png'
+                        })
+                    })
+                });
+                map.addLayer(markers);
+
+                var marker = new ol.Feature(new ol.geom.Point(ol.proj.fromLonLat([88.3639, 22.5726])));
+                markers.getSource().addFeature(marker);    
+            </script>
             </div>
         </div>
     </section>
@@ -108,11 +135,13 @@
                 </div>
                 <div class="form-class">
                     <label for="message">Enter Message:</label>
-                    <textarea name="message" id="message" cols="30" rows="10" placeholder="Enter your message"></textarea>
+                    <textarea name="message" id="message" cols="30" rows="10"
+                        placeholder="Enter your message"></textarea>
                 </div>
             </form>
         </div>
     </section>
-<script src="index.js"></script>
+    <script src="index.js"></script>
 </body>
+
 </html>
